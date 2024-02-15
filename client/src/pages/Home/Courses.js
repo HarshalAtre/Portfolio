@@ -1,9 +1,12 @@
 import React from 'react'
 import SectionTitle from '../../components/SectionTitle'
 import { courses } from '../../resources/courses';
+import { useSelector } from 'react-redux';
 
 function Courses() {
   const [Selecteditem, setSelectedItem] = React.useState(0);
+  const {loading,portfolioData}=useSelector((state)=>state.root)
+    const {courses}=portfolioData
   return (
     <div>
     <SectionTitle title="Courses"/>

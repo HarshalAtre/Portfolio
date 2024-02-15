@@ -1,16 +1,10 @@
 import React from 'react'
 import SectionTitle from '../../components/SectionTitle'
+import { useSelector } from 'react-redux'
 
 function Contact() {
-    const user=
-        {
-            name: "Harshal Atre B.",
-            age: null,
-            gender: "Male",
-            email: "harshalatre2@gmail.com",
-            mobile: "8160170389",
-            country: "INDIA"
-        }
+  const {portfolioData}=useSelector((state)=>state.root)
+    const {contact}=portfolioData
     
   return (
     <div>
@@ -18,10 +12,11 @@ function Contact() {
         <div className="flex text-tertiary sm:flex-col-reverse items-center justify-center">
             <div className="flex flex-col gap-1">
             <h1>{"{"}</h1>
-            {Object.keys(user).map((key, index) => (
+            {Object.keys(contact).map((key, index) => (
+    
     <h1 key={index} className=' ml-5'>
         <span>{key} :</span>
-        <span>{user[key]}</span>
+        <span>{contact[key]}</span>
     </h1>
 ))}
             <h1>{"}"}</h1>

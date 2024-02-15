@@ -8,6 +8,10 @@
 *{
     font-family: 'Montserrat', sans-serif;
 }
+.header h1{
+  margin: 0 !important;
+  padding: 0 !important;
+}
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -31,4 +35,74 @@
 
 .icon:hover {
   transform: scale(1.1); /* You can adjust the scale value to increase or decrease the glow effect */
+}
+
+.h{
+  animation: h 1s infinite;
+}
+@keyframes h {
+  0% {
+   opacity: 1;
+   scale: 1.1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.b{
+  animation: b 1s infinite;
+}
+@keyframes b {
+  0% {
+    opacity: 0.5;
+ 
+  }
+  50% {
+    opacity: 1;
+    scale: 1.1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.a{
+  animation: a 1s infinite;
+}
+@keyframes a {
+  0% {
+    opacity: 0.5;
+ 
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    scale: 1.1;
+  }
+}
+input{
+  height: 40px;
+  width: 100%;
+  border: 1px solid black;
+  padding-left:20px ;
+}
+input:focus{
+  outline: none;
+  border: 2px solid black;
+}
+textarea{
+  height: 100px;
+  width: 100%;
+  border: 1px solid black;
+  padding-left:20px ;
+}
+textarea:focus{
+  outline: none;
+  border: 2px solid black;
 }
