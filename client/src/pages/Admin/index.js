@@ -5,6 +5,9 @@ import AdminIntro from './AdminIntro';
 import AdminAbout from './AdminAbout';
 import { useSelector } from 'react-redux';
 import Experience from './Experience';
+import AdminProject from './AdminProject';
+import AdminCourses from './AdminCourses';
+import AdminContact from './AdminContact';
 const {TabPane} = Tabs;
 function Admin() {
     const {portfolioData}=useSelector((state)=>state.root)
@@ -22,6 +25,15 @@ function Admin() {
     <Tabs.TabPane tab="Experience" key="3">
       <Experience/>
     </Tabs.TabPane>
+    <Tabs.TabPane tab="Projects" key="4">
+      <AdminProject/>
+    </Tabs.TabPane>
+    <Tabs.TabPane tab="Courses" key="5">
+      <AdminCourses/>
+    </Tabs.TabPane><Tabs.TabPane tab="Contact" key="6">
+      <AdminContact/>
+    </Tabs.TabPane>
+
   </Tabs>) }
      </div>
    </>

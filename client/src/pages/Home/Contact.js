@@ -7,17 +7,17 @@ function Contact() {
     const {contact}=portfolioData
     
   return (
-    <div>
+    <div className='text-white'>
         <SectionTitle title="Say Hello ... "/>
         <div className="flex text-tertiary sm:flex-col-reverse items-center justify-center">
-            <div className="flex flex-col gap-1">
+            <div className=" text-white flex flex-col gap-1">
             <h1>{"{"}</h1>
             {Object.keys(contact).map((key, index) => (
-    
-    <h1 key={index} className=' ml-5'>
+    key!=="_id"&&(
+    <h1 key={index} className=' text-white ml-5'>
         <span>{key} :</span>
         <span>{contact[key]}</span>
-    </h1>
+    </h1>)
 ))}
             <h1>{"}"}</h1>
             </div>
