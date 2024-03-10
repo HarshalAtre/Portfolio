@@ -1,5 +1,6 @@
  const router=require('express').Router();
 const {Intro,About,Experience,Project,Course,Contact}=require('../models/portfoliModel');
+const User= require('../models/userModel');
 //get all portfolio data
 router.get('/get-portfolio-data',async(req,res)=>{
     try{
@@ -219,6 +220,7 @@ router.post('/update-contact', async (req, res) => {
 router.post('/admin-login', async (req, res) => {
     try {
         const user=await User.findOne({username:req.body.username,password:req.body.password})
+        user.password=""
         if(user){
             res.status(200).send({data:user,success:true,message:'Login successful'})
         }
