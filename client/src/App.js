@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HideLoading, ReloadData, SetPortfolioData, ShowLoading } from './redux/rootSlice';
 import Admin from './pages/Admin';
 import Login from './pages/Admin/Login';
+import Eye from './pages/Home/Eye';
 function App() {
   const {loading,portfolioData,reloadData}=useSelector((state)=>state.root)
   const dispatch=useDispatch()
@@ -43,6 +44,8 @@ function App() {
     <Route path='/' element={<Home/>} />
     <Route path='/admin' element={<Admin/>} />
     <Route path='/admin-login' element={<Login/>} />
+    <Route path='/eyes' element={<Eye/>} />
+
    </Routes>
    </BrowserRouter>
   )

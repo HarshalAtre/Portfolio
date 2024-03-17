@@ -1,0 +1,37 @@
+
+body{
+    overflow-x: hidden;
+}
+.eyes {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+.eye {
+    width: 40px; /* Adjusted width */
+    height: 40px; /* Same height as width for a circular shape */
+    background: #fff;
+    display: inline-block;
+    margin: 5px; /* Adjusted margin */
+    border-radius: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.ball {
+    width: 6px; /* Adjusted width */
+    height: 6px; /* Adjusted height */
+    background: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 6px solid #333; /* Adjusted border */
+}
+.mask:hover ~ .cursor{
+    transform: scale(5);
+}
