@@ -14,7 +14,7 @@ const dispatch=useDispatch()
 const login=async()=>{
   try {
     dispatch(ShowLoading())
-    const response=await axios.post('http://localhost:5000/portfolio/admin-login',user)
+    const response=await axios.post(`${process.env.REACT_APP_BACKEND}/portfolio/admin-login`,user)
     dispatch(HideLoading())
     if(response.data.success){
       message.success(response.data.message)

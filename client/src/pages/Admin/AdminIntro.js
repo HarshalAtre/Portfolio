@@ -11,7 +11,7 @@ function AdminIntro() {
     const onFinish = async(values) => {
        try{
         dispatch(ShowLoading())
-        const response=await axios.post('http://localhost:5000/portfolio/update-intro',{...values,_id:portfolioData.intro._id})
+        const response=await axios.post(`${process.env.REACT_APP_BACKEND}/portfolio/update-intro`,{...values,_id:portfolioData.intro._id})
         dispatch(HideLoading())
         if(response.data.success){
             message.success(response.data.message)

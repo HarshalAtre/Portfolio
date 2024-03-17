@@ -13,7 +13,7 @@ function AdminIntro() {
         const tempSkills=values.skills.split(",")
         values.skills=tempSkills
         dispatch(ShowLoading())
-        const response=await axios.post('http://localhost:5000/portfolio/update-about',{...values,_id:portfolioData.about._id})
+        const response=await axios.post(`${process.env.REACT_APP_BACKEND}/portfolio/update-about`,{...values,_id:portfolioData.about._id})
         dispatch(HideLoading())
         if(response.data.success){
             message.success(response.data.message)
