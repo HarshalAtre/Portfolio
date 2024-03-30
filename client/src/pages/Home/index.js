@@ -37,7 +37,7 @@ function Home() {
   };
 
   return (
-    <div style={{ cursor: "none" }}>
+    <div className='cursor-none sm:cursor-default'>
       <Header />
       {portfolioData && (
         <div className="bg-primary px-40 sm:px-5">
@@ -55,7 +55,7 @@ function Home() {
         </div>
       )}
       <motion.div
-        className="cursor"
+        className="cursor sm:hidden"
         animate={toggleVar}
         variants={{
           default: { scale: 1, opacity: 1 ,mixBlendMode:"difference"},

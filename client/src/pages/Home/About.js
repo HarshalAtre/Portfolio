@@ -2,19 +2,21 @@ import React, { useState } from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-function About({ enter,leave,cursorPosition}) {
+
+function About({ enter, leave, cursorPosition }) {
   const { portfolioData } = useSelector((state) => state.root);
   const { about } = portfolioData;
   const { lottieUrl, description1, description2, skills } = about;
-  const [toggleVar, setToggleVar] = useState('default');
+  const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
 
-  const scale = () => {
-    setToggleVar('text');
+  const handleSkillHover = (index) => {
+    setHoveredSkillIndex(index);
   };
 
-  const normal = () => {
-    setToggleVar('default');
+  const handleSkillLeave = () => {
+    setHoveredSkillIndex(null);
   };
+
   return (
     <div>
       <SectionTitle title="About" />
@@ -22,7 +24,7 @@ function About({ enter,leave,cursorPosition}) {
         <div className='h-[70vh] w-1/2 sm:w-full'>
           <dotlottie-player src={lottieUrl || ""} background="transparent" speed="1" loop autoplay></dotlottie-player>
         </div>
-        <div  onMouseEnter={enter} onMouseLeave={leave} className="flex flex-col gap-5 w-1/2 sm:w-full">
+        <div onMouseEnter={enter} onMouseLeave={leave} className="flex flex-col gap-5 w-1/2 sm:w-full">
           <p className='text-white'>{description1 || ""}</p>
           <p className='text-white'>{description2 || ""}</p>
         </div>
@@ -33,8 +35,14 @@ function About({ enter,leave,cursorPosition}) {
         </h1>
         <div className='flex flex-wrap gap-10 mt-5'>
           {skills.map((skill, index) => (
-            <div className='border border-tertiary py-3 px-5' key={index}>
-              <h1 className='text-tertiary'>{skill}</h1>
+            <div
+            
+              key={index}
+              onMouseEnter={() => handleSkillHover(index)}
+              onMouseLeave={handleSkillLeave}
+              className={`skill border border-tertiary py-3 px-5 ${hoveredSkillIndex === index ? 'hovered' : ''}`}
+            >
+              <h1 onMouseEnter={enter} onMouseLeave={leave} className={`${hoveredSkillIndex === index ? 'text-black' : 'text-tertiary'}`}>{skill}</h1>
             </div>
           ))}
         </div>
