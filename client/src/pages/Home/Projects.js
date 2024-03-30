@@ -48,7 +48,7 @@ function Projects({ enter, leave, cursorPosition }) {
           ))}
         </div>
         <div className="flex items-center justify-center gap-10 sm:flex-col">
-          <img src={projects[selectedItem].image} alt="" className='h-60 ' />
+          <img src={projects[selectedItem].image} alt="" className='h-60 ' style={{width:"400px"}} /> 
           <div onMouseEnter={enter} onMouseLeave={leave} className='flex flex-col gap-5'>
             <h1 className='text-secondary text-xl'>{projects[selectedItem].title}</h1>
             <p className="text-white" style={{ whiteSpace: 'pre-wrap' }}>{projects[selectedItem].description}</p>
