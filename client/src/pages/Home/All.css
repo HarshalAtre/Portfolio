@@ -35,10 +35,10 @@ body{
 .mask:hover ~ .cursor{
     transform: scale(5);
 }
-button{
+.btn{
 transition: all 0.5s ease-in-out;
 }
-button:hover{
+.btn:hover{
 background-color: aqua;
 color: #333;
 scale: 1.1;

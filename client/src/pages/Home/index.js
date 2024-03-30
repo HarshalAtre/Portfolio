@@ -62,7 +62,7 @@ function Home() {
           text: { scale: 1.5, opacity: 1, height: 50, width: 50,backgroundColor:"white",mixBlendMode:"difference" },
         }}
         style={{
-          zIndex: 0,
+          zIndex: 1000,
           position: 'fixed',
           top: cursorPosition.y-15,
           left: cursorPosition.x-15,
