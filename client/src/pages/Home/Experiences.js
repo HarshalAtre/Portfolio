@@ -19,7 +19,7 @@ function Experiences({ enter, leave, cursorPosition }) {
   return (
     <div>
       <div onMouseEnter={enter} onMouseLeave={leave}>
-        <SectionTitle title="Experiences" />
+        <SectionTitle title="Position Of responsibility" />
       </div>
       <div className="flex gap-20 sm:flex-col">
         <div className='flex w-1/3 flex-col gap-10 border-l-2 border-[#61e8e8] sm:border-l-[0.5px]  sm:flex-row sm:overflow-x-scroll sm:w-full sm:gap-5 sm:p-0'>
