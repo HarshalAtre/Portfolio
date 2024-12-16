@@ -13,7 +13,7 @@ function Intro({enter,leave,cursorPosition}) {
     <h1 onMouseEnter={enter} onMouseLeave={leave} className=' text-7xl sm:text-3xl text-secondary font-semibold'>{firstName||""} {lastName||""}</h1>
    <div onMouseEnter={enter} onMouseLeave={leave} className='flex flex-row  items-center'> <h1  className=' text-6xl sm:text-3xl text-white font-semibold inline'>{caption||""}</h1>   <Link to="/admin-login" className="cursor-none"><Eye/> </Link></div>
     <p className="text-white w-2/3">{description||""}</p>
-    <a href="HTT_Resume.pdf" download><button  className='border-2 border-tertiary text-white px-10 py-3 rounded cursor-none btn'>Download CV</button></a>
+    <a href="Harshal_Updated.pdf" download><button  className='border-2 border-tertiary text-white px-10 py-3 rounded cursor-none btn'>Download CV</button></a>
     </div>
     </>
   )
