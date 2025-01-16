@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
 import Modal from '../../components/Model';
-
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 function Projects({ enter, leave, cursorPosition }) {
   const [selectedItem, setSelectedItem] = useState(0);
@@ -24,7 +24,8 @@ function Projects({ enter, leave, cursorPosition }) {
     setModalImage(image);
     setIsModalOpen(true);
   };
-
+  
+  const navigate  = useNavigate();
   return (
     <div>
       <div onMouseEnter={enter} onMouseLeave={leave}>
@@ -46,13 +47,15 @@ function Projects({ enter, leave, cursorPosition }) {
                 color: hoveredTitleIndex === index ? '#43e7e4' : 'white',
               }}
             >
-              <h1
-                className={`text-xl px-5 ${
+              
+              <h1  
+                className={`text-xl px-5 yai ${
                   selectedItem === index ? 'text-tertiary border-tertiary border-l-4 -ml-[3px] py-3' : 'text-white'
                 }`}
               >
                 {project.title}
               </h1>
+    
             </div>
           ))}
         </div>
@@ -65,7 +68,12 @@ function Projects({ enter, leave, cursorPosition }) {
             onClick={() => handleImageClick(projects[selectedItem].image)} // Open modal on image click
           /> 
           <div onMouseEnter={enter} onMouseLeave={leave} className='flex flex-col gap-5'>
-            <h1 className='text-secondary text-xl'>{projects[selectedItem].title}</h1>
+            <div className='flex flex-row gap-2'>
+            <h1 onClick={()=>navigate(`${projects[selectedItem].link}`)} className='text-secondary text-xl'>{projects[selectedItem].title}</h1>
+            <Link to={projects[selectedItem].link} className='text-secondary text-xl'>
+            <img className='h-5 w-5' src="/external-link.png" alt="" />
+            </Link>
+            </div>
             <p className="text-white" style={{ whiteSpace: 'pre-wrap' }}>{projects[selectedItem].description}</p>
           </div>
         </div>
