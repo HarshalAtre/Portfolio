@@ -69,10 +69,22 @@ function Projects({ enter, leave, cursorPosition }) {
           /> 
           <div onMouseEnter={enter} onMouseLeave={leave} className='flex flex-col gap-5'>
             <div className='flex flex-row gap-2'>
-            <h1 onClick={()=>navigate(`${projects[selectedItem].link}`)} className='text-secondary text-xl'>{projects[selectedItem].title}</h1>
-            <Link to={projects[selectedItem].link} className='text-secondary text-xl'>
-            <img className='h-5 w-5' src="/external-link.png" alt="" />
-            </Link>
+            <h1 
+  onClick={() => window.open(projects[selectedItem].link, '_blank')} 
+  className='text-secondary text-xl cursor-pointer'
+>
+  {projects[selectedItem].title}
+</h1>
+
+<img 
+  className='h-5 w-5 cursor-pointer' 
+  onClick={() => window.open(projects[selectedItem].link, '_blank')} 
+  src="/external-link.png" 
+  alt="" 
+/>
+
+            {/* <Link to={projects[selectedItem].link} className='text-secondary text-xl'> */}
+            {/* </Link> */}
             </div>
             <p className="text-white" style={{ whiteSpace: 'pre-wrap' }}>{projects[selectedItem].description}</p>
           </div>
