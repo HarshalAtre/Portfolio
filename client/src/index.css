@@ -159,7 +159,7 @@ textarea:focus{
 
 .skills-strip__item {
   flex-shrink: 0;
-  border: 1px solid #52c7c2;
+  border: 1.5px solid #52c7c2;
   color: #52c7c2;
   background: rgba(82, 199, 194, 0.08);
   padding: 10px 22px;

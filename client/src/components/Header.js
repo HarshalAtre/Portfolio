@@ -49,11 +49,11 @@ function Header() {
       }`}
     >
       <nav className="flex items-center justify-between pl-40 pr-12 sm:px-5">
-        <a href="#home" className="text-xl font-bold tracking-tight text-white -ml-28 xl:ml-0">
+        <a href="#home" className="text-xl font-bold tracking-tight text-white -ml-28 sm:ml-0">
           HA<span className="text-secondary">.</span>
         </a>
 
-        <div className="flex items-center gap-1 md:hidden">
+        <div className="flex items-center gap-1 ml-12 md:hidden">
           <div className="rounded-full border border-[#1f436f] bg-[#0f2a4a]/70 px-2 py-1 flex items-center gap-1">
             {navLinks.map(link => (
               <a
