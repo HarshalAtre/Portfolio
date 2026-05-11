@@ -106,3 +106,67 @@ textarea:focus{
   outline: none;
   border: 2px solid black;
 }
+
+@keyframes skills-strip-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.skills-strip {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.skills-strip::before,
+.skills-strip::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.skills-strip::before {
+  left: 0;
+  background: linear-gradient(to right, #081932 0%, rgba(8, 25, 50, 0) 100%);
+}
+
+.skills-strip::after {
+  right: 0;
+  background: linear-gradient(to left, #081932 0%, rgba(8, 25, 50, 0) 100%);
+}
+
+.skills-strip__track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: skills-strip-marquee 26s linear infinite;
+}
+
+.skills-strip:hover .skills-strip__track {
+  animation-play-state: paused;
+}
+
+.skills-strip__item {
+  flex-shrink: 0;
+  border: 1px solid #52c7c2;
+  color: #52c7c2;
+  background: rgba(82, 199, 194, 0.08);
+  padding: 10px 22px;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.skills-strip__item:hover {
+  background: #ff7b10;
+  border-color: #ff7b10;
+  color: #081932;
+}

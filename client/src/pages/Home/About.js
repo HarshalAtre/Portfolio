@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
-import { motion } from 'framer-motion';
 
-function About({ enter, leave, cursorPosition }) {
+function About({ enter, leave }) {
   const { portfolioData } = useSelector((state) => state.root);
   const { about } = portfolioData;
   const { lottieUrl, description1, description2, skills } = about;
-  const [hoveredSkillIndex, setHoveredSkillIndex] = useState(null);
-
-  const handleSkillHover = (index) => {
-    setHoveredSkillIndex(index);
-  };
-
-  const handleSkillLeave = () => {
-    setHoveredSkillIndex(null);
-  };
+  const scrollingSkills = [...skills, ...skills];
 
   return (
     <div>
@@ -33,18 +24,14 @@ function About({ enter, leave, cursorPosition }) {
         <h1 className='text-tertiary text-xl'>
           Here are a few technologies I've been working with recently:
         </h1>
-        <div className='flex flex-wrap gap-10 mt-5'>
-          {skills.map((skill, index) => (
-            <div
-            
-              key={index}
-              onMouseEnter={() => handleSkillHover(index)}
-              onMouseLeave={handleSkillLeave}
-              className={`skill border border-tertiary py-3 px-5 ${hoveredSkillIndex === index ? 'hovered' : ''}`}
-            >
-              <h1 onMouseEnter={enter} onMouseLeave={leave} className={`${hoveredSkillIndex === index ? 'text-black' : 'text-tertiary'}`}>{skill}</h1>
-            </div>
-          ))}
+        <div className='skills-strip mt-6' onMouseEnter={enter} onMouseLeave={leave}>
+          <div className='skills-strip__track'>
+            {scrollingSkills.map((skill, index) => (
+              <div key={`${skill}-${index}`} className='skills-strip__item'>
+                {skill}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

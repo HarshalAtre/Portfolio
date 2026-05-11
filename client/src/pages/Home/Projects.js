@@ -1,97 +1,110 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
-import Modal from '../../components/Model';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { projects as fallbackProjects } from '../../resources/projects';
 
-function Projects({ enter, leave, cursorPosition }) {
-  const [selectedItem, setSelectedItem] = useState(0);
-  const { loading, portfolioData } = useSelector((state) => state.root);
-  const { projects } = portfolioData;
-  const [hoveredTitleIndex, setHoveredTitleIndex] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal open/close
-  const [modalImage, setModalImage] = useState(null); // State to store the image URL for modal
+function Projects({ enter, leave }) {
+  const { portfolioData } = useSelector((state) => state.root);
+  const apiProjects = Array.isArray(portfolioData?.projects) ? portfolioData.projects : [];
+  const projects = apiProjects.length > 0 ? apiProjects : fallbackProjects;
 
-  const handleTitleHoverEnter = (index) => {
-    setHoveredTitleIndex(index);
-  };
-
-  const handleTitleHoverLeave = () => {
-    setHoveredTitleIndex(null);
-  };
-
-  const handleImageClick = (image) => {
-    setModalImage(image);
-    setIsModalOpen(true);
-  };
-  
-  const navigate  = useNavigate();
   return (
-    <div>
-      <div onMouseEnter={enter} onMouseLeave={leave}>
-        <SectionTitle title="Projects" />
+    <section onMouseEnter={enter} onMouseLeave={leave} className="relative py-10">
+      <SectionTitle title="Projects" />
+
+      <div className="text-center mx-auto max-w-3xl mb-12">
+        <h2 className="text-4xl sm:text-3xl font-semibold mt-2 mb-4 text-white">
+          Some Things I've Built
+        </h2>
+        <p className="text-gray-400">
+          A selection of my recent work with real-world applications and hands-on builds.
+        </p>
       </div>
-      <div className="flex gap-20 sm:flex-col">
-        <div className='flex w-1/3 flex-col gap-10 border-l-2 border-[#61e8e8] sm:border-l-[0.5px] sm:flex-row sm:overflow-x-scroll sm:w-full sm:gap-5 sm:p-0'>
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className='cursor-pointer'
-              onClick={() => {
-                setSelectedItem(index);
-              }}
-              onMouseEnter={() => handleTitleHoverEnter(index)}
-              onMouseLeave={handleTitleHoverLeave}
-              style={{
-                backgroundColor: hoveredTitleIndex === index ? '#43e7e422' : 'transparent',
-                color: hoveredTitleIndex === index ? '#43e7e4' : 'white',
-              }}
+
+      <div className="grid grid-cols-2 md:grid-cols-1 gap-8">
+        {projects.map((project, idx) => {
+          const tags = Array.isArray(project.technologies) ? project.technologies : [];
+          const hasLink = Boolean(project.link);
+          const imageSrc = project.image || '/logo512.png';
+
+          return (
+            <article
+              key={`${project.id || project.title || idx}`}
+              className="group rounded-2xl overflow-hidden border border-[#1f436f] bg-[#10294d] hover:border-tertiary transition-all duration-300 hover:-translate-y-1 hover:[box-shadow:0_14px_30px_rgba(2,12,27,0.6)]"
             >
-              
-              <h1  
-                className={`text-xl px-5 yai ${
-                  selectedItem === index ? 'text-tertiary border-tertiary border-l-4 -ml-[3px] py-3' : 'text-white'
-                }`}
-              >
-                {project.title}
-              </h1>
-    
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center justify-center gap-10 sm:flex-col">
-          <img 
-            src={projects[selectedItem].image} 
-            alt="" 
-            className='h-60 cursor-pointer' 
-            style={{ width: "400px" }} 
-            onClick={() => handleImageClick(projects[selectedItem].image)} // Open modal on image click
-          /> 
-          <div onMouseEnter={enter} onMouseLeave={leave} className='flex flex-col gap-5'>
-            <div className='flex flex-row gap-2'>
-            <h1 
-  onClick={() => window.open(projects[selectedItem].link, '_blank')} 
-  className='text-secondary text-xl cursor-pointer'
->
-  {projects[selectedItem].title}
-</h1>
+              <div className="relative overflow-hidden aspect-video bg-[#081932]">
+                <img
+                  src={imageSrc}
+                  alt={project.title || 'Project image'}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    e.currentTarget.src = '/logo512.png';
+                  }}
+                />
 
-<img 
-  className='h-5 w-5 cursor-pointer' 
-  onClick={() => window.open(projects[selectedItem].link, '_blank')} 
-  src="/external-link.png" 
-  alt="" 
-/>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#081932] via-[#081932aa] to-transparent opacity-60" />
 
-            {/* <Link to={projects[selectedItem].link} className='text-secondary text-xl'> */}
-            {/* </Link> */}
-            </div>
-            <p className="text-white" style={{ whiteSpace: 'pre-wrap' }}>{projects[selectedItem].description}</p>
-          </div>
-        </div>
+                {hasLink && (
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.title} external link`}
+                      className="p-3 rounded-full border border-tertiary bg-[#081932cc] text-tertiary hover:bg-tertiary hover:text-primary transition-all"
+                    >
+                      ↗
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              <div className="p-6 space-y-4">
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-xl font-semibold text-white group-hover:text-secondary transition-colors">
+                    {project.title}
+                  </h3>
+                  {hasLink && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-gray-400 group-hover:text-secondary transition-colors"
+                      aria-label={`${project.title} link icon`}
+                    >
+                      <img src="/external-link.png" alt="" className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+
+                <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap">
+                  {project.description}
+                </p>
+
+                {tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag, tagIdx) => (
+                      <span
+                        key={`${tag}-${tagIdx}`}
+                        className="px-3 py-1 rounded-full bg-[#0b2140] text-xs font-medium border border-[#1f436f] text-tertiary"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          );
+        })}
       </div>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} image={modalImage} /> {/* Render the Modal component */}
-    </div>
+
+      {projects.length === 0 && (
+        <div className="rounded-lg border border-[#1f436f] bg-[#10294d] p-6 mt-8">
+          <p className="text-gray-300">No projects available yet.</p>
+        </div>
+      )}
+    </section>
   );
 }
 

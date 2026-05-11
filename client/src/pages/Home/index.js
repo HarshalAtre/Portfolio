@@ -5,11 +5,11 @@ import Intro from './Intro';
 import About from './About';
 import Experiences from './Experiences';
 import Projects from './Projects';
-import Courses from './Courses';
 import Contact from './Contact';
 import Footer from './Footer';
 import LeftSider from './LeftSider';
 import { useSelector } from 'react-redux';
+import ScrollReveal from '../../components/ScrollReveal';
 
 function Home() {
   const { portfolioData } = useSelector((state) => state.root);
@@ -42,15 +42,27 @@ function Home() {
       {portfolioData && (
         <div className="bg-primary px-40 sm:px-5">
           <Intro enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
-          
-          <About enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
 
-     
-          <Experiences enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition}/>
-          < Projects enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition}/>
-          <Courses enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition}/>
-          <Contact enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
-          <Footer />
+          <ScrollReveal delay={0.05}>
+            <About enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.08}>
+            <Experiences enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1}>
+            <Projects enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.14}>
+            <Contact enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.16}>
+            <Footer />
+          </ScrollReveal>
+
           <LeftSider />
         </div>
       )}

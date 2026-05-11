@@ -3,11 +3,16 @@ body{
     overflow-x: hidden;
 }
 .eyes {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-    text-align: center;
+    position: static;
+    top: auto;
+    transform: none;
+    width: auto;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-left: 0;
 }
 
 .eye {
@@ -136,6 +141,10 @@ transition: all 0.5s ease-in-out;
   
   .fancy:hover .letter:nth-child(15) {
     transform: translate(-10%, -120%) rotate(22deg);
+  }
+
+  .fancy:hover .letter {
+    transform: translate(var(--tx, 0px), var(--ty, 0px)) rotate(var(--rot, 0deg));
   }
   
   /* Add more styles for other letters as needed */

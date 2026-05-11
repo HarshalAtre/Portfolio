@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './All.css';
-import { Link } from 'react-router-dom';
 
 function Eye() {
   useEffect(() => {
