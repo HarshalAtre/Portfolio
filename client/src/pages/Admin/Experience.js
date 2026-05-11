@@ -163,7 +163,7 @@ function Experience() {
               <input type="text" placeholder="Title" />
             </Form.Item>
             <Form.Item name="description" label="Description" rules={[{ required: true }]}>
-              <input type="text" placeholder="Description" />
+              <textarea placeholder="Description" rows={6} />
             </Form.Item>
             <div className="flex gap-10 justify-end">
               <button

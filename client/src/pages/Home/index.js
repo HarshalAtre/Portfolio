@@ -40,7 +40,7 @@ function Home() {
     <div className='cursor-none sm:cursor-default'>
       <Header />
       {portfolioData && (
-        <div className="bg-primary px-40 sm:px-5">
+        <div className="bg-primary pl-40 pr-12 sm:px-5">
           <Intro enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
 
           <ScrollReveal delay={0.05}>

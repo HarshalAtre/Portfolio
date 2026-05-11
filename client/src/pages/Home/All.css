@@ -9,9 +9,9 @@ body{
     width: auto;
     text-align: left;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    gap: 4px;
+    gap: 6px;
     margin-left: 0;
 }
 
@@ -20,7 +20,7 @@ body{
     height: 40px; /* Same height as width for a circular shape */
     background: #fff;
     display: inline-block;
-    margin: 5px; /* Adjusted margin */
+    margin: 0;
     border-radius: 100%;
     position: relative;
     overflow: hidden;

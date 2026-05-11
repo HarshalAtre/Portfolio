@@ -3,6 +3,36 @@ import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
 import { formatPeriod, sortExperienceByDate } from '../../utils/experienceDates';
 
+function renderExperienceDescription(description) {
+  const lines = String(description || '')
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean);
+
+  if (!lines.length) return null;
+
+  const hasBulletLines = lines.some(line => line.startsWith('-'));
+  if (!hasBulletLines) {
+    return <p className="mt-4 text-sm text-gray-300 whitespace-pre-wrap text-left">{description}</p>;
+  }
+
+  return (
+    <div className="mt-4 text-sm text-gray-300 text-left">
+      <ul className="list-disc pl-5 space-y-1">
+        {lines.map((line, idx) =>
+          line.startsWith('-') ? (
+            <li key={idx}>{line.replace(/^-+\s*/, '')}</li>
+          ) : (
+            <li key={idx} className="list-none -ml-5">
+              {line}
+            </li>
+          ),
+        )}
+      </ul>
+    </div>
+  );
+}
+
 function Experiences({ enter, leave }) {
   const { portfolioData } = useSelector((state) => state.root);
   const experience = sortExperienceByDate(portfolioData?.experience || []);
@@ -14,17 +44,6 @@ function Experiences({ enter, leave }) {
   return (
     <section onMouseEnter={enter} onMouseLeave={leave}>
       <SectionTitle title="Experience" />
-
-      <div className="mb-12">
-        <h2 className="text-white text-4xl sm:text-3xl font-semibold leading-tight">
-          Experience that
-          <span className="text-secondary"> speaks for itself.</span>
-        </h2>
-        <p className="text-gray-400 mt-4 max-w-3xl">
-          A quick timeline of roles, responsibilities, and hands-on work that
-          shaped my development journey.
-        </p>
-      </div>
 
       <div className="relative pb-3">
         <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-tertiary via-[#52C7C288] to-transparent [box-shadow:0_0_24px_rgba(82,199,194,0.6)] sm:left-3 sm:translate-x-0" />
@@ -48,11 +67,11 @@ function Experiences({ enter, leave }) {
                 <div
                   className={`${
                     onLeft
-                      ? 'col-start-1 pr-10 text-right'
+                      ? 'col-start-1 pr-10'
                       : 'col-start-2 pl-10 text-left'
-                  } sm:col-start-1 sm:pl-0 sm:pr-0 sm:text-left`}
+                  } sm:col-start-1 sm:pl-0 sm:pr-0`}
                 >
-                  <div className="rounded-2xl border border-[#52C7C244] bg-[#0d2447]/70 p-6 transition-all duration-300 hover:border-tertiary hover:[box-shadow:0_0_24px_rgba(82,199,194,0.35)]">
+                  <div className="rounded-2xl border border-[#52C7C244] bg-[#0d2447]/70 p-6 text-left transition-all duration-300 hover:border-tertiary hover:[box-shadow:0_0_24px_rgba(82,199,194,0.35)]">
                     <span className="text-sm font-medium text-tertiary">
                       {formatPeriod(exp.period)}
                     </span>
@@ -60,9 +79,7 @@ function Experiences({ enter, leave }) {
                       {exp.title}
                     </h3>
                     <p className="text-secondary font-medium">{exp.company}</p>
-                    <p className="mt-4 text-sm text-gray-300 whitespace-pre-wrap">
-                      {exp.description}
-                    </p>
+                    {renderExperienceDescription(exp.description)}
                   </div>
                 </div>
               </div>
