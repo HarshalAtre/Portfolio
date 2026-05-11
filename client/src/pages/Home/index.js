@@ -40,23 +40,31 @@ function Home() {
     <div className='cursor-none sm:cursor-default'>
       <Header />
       {portfolioData && (
-        <div className="bg-primary pl-40 pr-12 sm:px-5">
+        <div id="home" className="bg-primary pl-40 pr-12 pt-24 sm:px-5 sm:pt-20">
           <Intro enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
 
           <ScrollReveal delay={0.05}>
-            <About enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            <section id="about">
+              <About enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            </section>
           </ScrollReveal>
 
           <ScrollReveal delay={0.08}>
-            <Experiences enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            <section id="experience">
+              <Experiences enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            </section>
           </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
-            <Projects enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            <section id="projects">
+              <Projects enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            </section>
           </ScrollReveal>
 
           <ScrollReveal delay={0.14}>
-            <Contact enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            <section id="contact">
+              <Contact enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
+            </section>
           </ScrollReveal>
 
           <ScrollReveal delay={0.16}>
