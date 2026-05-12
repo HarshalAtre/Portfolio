@@ -70,7 +70,7 @@ function Header() {
         <a
           href="#contact"
           aria-label="Say Hello"
-          className="inline-flex items-center justify-center md:hidden overflow-visible"
+          className="inline-flex items-center justify-center md:hidden overflow-visible mario-navbar"
         >
           <dotlottie-player
             src="/mario-nav.lottie"
@@ -108,7 +108,7 @@ function Header() {
               href="#contact"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label="Say Hello"
-              className="inline-flex items-center justify-center w-fit overflow-visible"
+              className="inline-flex items-center justify-center w-fit overflow-visible mario-hamburger"
             >
               <dotlottie-player
                 src="/mario-nav.lottie"

@@ -11,6 +11,9 @@
 html{
   scroll-behavior: smooth;
 }
+.mario-navbar {
+  visibility: hidden;
+}
 .header h1{
   margin: 0 !important;
   padding: 0 !important;
@@ -214,6 +217,14 @@ textarea:focus{
   .header-mobile-link {
     font-size: 0.95rem;
     line-height: 1.4;
+  }
+
+  .skills-strip__item {
+    border-width: 2px;
+  }
+
+  .mario-hamburger {
+    display: none;
   }
 
   .projects-section {
