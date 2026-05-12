@@ -48,8 +48,8 @@ function Header() {
           : 'bg-transparent py-5'
       }`}
     >
-      <nav className="relative flex items-center justify-between pl-40 pr-12 sm:px-5">
-        <a href="#home" className="text-xl font-bold tracking-tight text-white -ml-28 sm:ml-0">
+      <nav className={`header-nav relative flex items-center justify-between pl-40 pr-12 sm:px-5 ${isMobileMenuOpen ? 'menu-open' : ''}`}>
+        <a href="#home" className="header-brand text-xl font-bold tracking-tight text-white -ml-28 sm:ml-0">
           HA<span className="text-secondary">.</span>
         </a>
 
@@ -83,7 +83,7 @@ function Header() {
         </a>
 
         <button
-          className="hidden md:block text-white border border-[#1f436f] rounded-lg px-3 py-1"
+          className="header-menu-btn hidden md:block text-white border border-[#1f436f] rounded-lg px-3 py-1"
           onClick={() => setIsMobileMenuOpen(prev => !prev)}
           aria-label="Toggle menu"
         >
@@ -93,13 +93,13 @@ function Header() {
 
       {isMobileMenuOpen && (
         <div className="hidden md:block bg-[#081932ee] backdrop-blur-md border-t border-[#1f436f] animate-fade-in">
-          <div className="px-5 py-5 flex flex-col gap-3">
+          <div className="header-mobile-menu px-5 py-5 flex flex-col gap-3">
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-gray-300 hover:text-white py-2"
+                className="header-mobile-link text-gray-300 hover:text-white py-2"
               >
                 {link.label}
               </a>

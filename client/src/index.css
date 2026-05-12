@@ -119,6 +119,23 @@ textarea:focus{
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out both;
+}
+
 .skills-strip {
   position: relative;
   overflow: hidden;
@@ -172,4 +189,127 @@ textarea:focus{
   background: #ff7b10;
   border-color: #ff7b10;
   color: #081932;
+}
+
+@media (max-width: 767px) {
+  .header-nav {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .header-nav.menu-open {
+    padding-bottom: 0.75rem;
+  }
+
+  .header-brand {
+    margin-left: 0 !important;
+    font-size: 1.05rem;
+  }
+
+  .header-mobile-menu {
+    padding: 1rem;
+    gap: 0.625rem;
+  }
+
+  .header-mobile-link {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .projects-section {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .projects-section__intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .projects-section__title {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+
+  .projects-section__subtitle {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .projects-section__grid {
+    gap: 1.1rem;
+  }
+
+  .projects-section__card {
+    border-radius: 0.85rem;
+  }
+
+  .projects-section__content {
+    padding: 1rem;
+    row-gap: 0.75rem;
+  }
+
+  .projects-section__card-title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .experience-timeline__list {
+    row-gap: 1.5rem;
+  }
+
+  .experience-timeline__row {
+    padding-left: 2rem !important;
+    gap: 1rem;
+  }
+
+  .experience-timeline__card {
+    padding: 1rem;
+    border-radius: 0.85rem;
+  }
+
+  .experience-timeline__title {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 430px) {
+  .home-root {
+    overflow-x: hidden;
+  }
+
+  .header-nav {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .header-brand {
+    font-size: 1rem;
+  }
+
+  .header-menu-btn {
+    padding: 0.28rem 0.5rem !important;
+    font-size: 0.95rem;
+    line-height: 1;
+  }
+
+  .intro-name {
+    font-size: clamp(2rem, 9.5vw, 2.35rem) !important;
+    white-space: normal !important;
+  }
+
+  .intro-caption-row {
+    flex-wrap: wrap;
+    gap: 0.45rem !important;
+  }
+
+  .intro-caption-text {
+    font-size: clamp(1.25rem, 6vw, 1.7rem) !important;
+    white-space: normal !important;
+  }
+
+  .intro-eye-link,
+  .eyes {
+    display: none !important;
+  }
 }

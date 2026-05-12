@@ -37,7 +37,7 @@ function Home() {
   };
 
   return (
-    <div className='cursor-none sm:cursor-default'>
+    <div className='home-root cursor-none sm:cursor-default'>
       <Header />
       {portfolioData && (
         <div id="home" className="bg-primary pl-40 pr-12 pt-24 sm:px-5 sm:pt-20">

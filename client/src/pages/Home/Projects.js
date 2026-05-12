@@ -9,19 +9,19 @@ function Projects({ enter, leave }) {
   const projects = apiProjects.length > 0 ? apiProjects : fallbackProjects;
 
   return (
-    <section onMouseEnter={enter} onMouseLeave={leave} className="relative py-10">
+    <section onMouseEnter={enter} onMouseLeave={leave} className="projects-section relative py-10">
       <SectionTitle title="Projects" />
 
-      <div className="text-center mx-auto max-w-3xl mb-12">
-        <h2 className="text-4xl sm:text-3xl font-semibold mt-2 mb-4 text-white">
+      <div className="projects-section__intro text-center mx-auto max-w-3xl mb-12">
+        <h2 className="projects-section__title text-4xl sm:text-3xl font-semibold mt-2 mb-4 text-white">
           Some Things I've Built
         </h2>
-        <p className="text-gray-400">
+        <p className="projects-section__subtitle text-gray-400">
           A selection of my recent work with real-world applications and hands-on builds.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-1 gap-8">
+      <div className="projects-section__grid grid grid-cols-2 md:grid-cols-1 gap-8">
         {projects.map((project, idx) => {
           const tags = Array.isArray(project.technologies) ? project.technologies : [];
           const hasLink = Boolean(project.link);
@@ -30,7 +30,7 @@ function Projects({ enter, leave }) {
           return (
             <article
               key={`${project.id || project.title || idx}`}
-              className="group rounded-2xl overflow-hidden border border-[#1f436f] bg-[#10294d] hover:border-tertiary transition-all duration-300 hover:-translate-y-1 hover:[box-shadow:0_14px_30px_rgba(2,12,27,0.6)]"
+              className="projects-section__card group rounded-2xl overflow-hidden border border-[#1f436f] bg-[#10294d] hover:border-tertiary transition-all duration-300 hover:-translate-y-1 hover:[box-shadow:0_14px_30px_rgba(2,12,27,0.6)]"
             >
               <div className="relative overflow-hidden aspect-video bg-[#081932]">
                 <img
@@ -59,9 +59,9 @@ function Projects({ enter, leave }) {
                 )}
               </div>
 
-              <div className="p-6 space-y-4">
+              <div className="projects-section__content p-6 space-y-4">
                 <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-secondary transition-colors">
+                  <h3 className="projects-section__card-title text-xl font-semibold text-white group-hover:text-secondary transition-colors">
                     {project.title}
                   </h3>
                   {hasLink && (

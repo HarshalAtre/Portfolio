@@ -49,14 +49,14 @@ function Intro({enter,leave,cursorPosition}) {
     >
       <div className='col-span-8 sm:col-span-1 sm:order-2 flex flex-col items-start justify-center gap-8 min-w-0 pr-6 xl:pr-3 sm:pr-0'>
         <motion.h1 className='text-white' variants={item}>{welcomeText||""}</motion.h1>
-        <motion.h1 variants={item} onMouseEnter={enter} onMouseLeave={leave} className='text-[clamp(2.7rem,5.2vw,5rem)] text-secondary font-semibold leading-[1.05] whitespace-nowrap'>
+        <motion.h1 variants={item} onMouseEnter={enter} onMouseLeave={leave} className='intro-name text-[clamp(2.7rem,5.2vw,5rem)] text-secondary font-semibold leading-[1.05] whitespace-nowrap'>
           {firstName||""} {lastName||""}
         </motion.h1>
-        <motion.div variants={item} onMouseEnter={enter} onMouseLeave={leave} className='flex flex-row items-start gap-3 xl:gap-2 flex-nowrap w-full'>
-          <h1 className='text-[clamp(1.9rem,3.1vw,3.3rem)] xl:text-[clamp(1.7rem,2.65vw,2.5rem)] text-white font-semibold whitespace-nowrap leading-[1.1]'>
+        <motion.div variants={item} onMouseEnter={enter} onMouseLeave={leave} className='intro-caption-row flex flex-row items-start gap-3 xl:gap-2 flex-nowrap w-full'>
+          <h1 className='intro-caption-text text-[clamp(1.9rem,3.1vw,3.3rem)] xl:text-[clamp(1.7rem,2.65vw,2.5rem)] text-white font-semibold whitespace-nowrap leading-[1.1]'>
             {caption||""}
           </h1>
-          <Link to="/admin-login" className="cursor-none inline-flex items-start -mt-1">
+          <Link to="/admin-login" className="intro-eye-link cursor-none inline-flex items-start -mt-1">
             <Eye/>
           </Link>
         </motion.div>
