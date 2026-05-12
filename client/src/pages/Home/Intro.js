@@ -4,8 +4,8 @@ import Eye from './Eye'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-function Intro({enter,leave,cursorPosition}) {
-  const {loading,portfolioData}=useSelector((state)=>state.root)
+function Intro({enter,leave}) {
+  const {portfolioData}=useSelector((state)=>state.root)
   const {intro}=portfolioData
   const{firstName,lastName,welcomeText,description,caption}=intro
   const [imageError, setImageError] = useState(false);

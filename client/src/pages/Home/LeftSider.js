@@ -1,5 +1,4 @@
 import React from 'react';
-import Eye from './Eye';
 
 function LeftSider() {
   return (

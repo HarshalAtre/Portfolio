@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Loader from './pages/Home/Loader';
-import { useEffect, useState } from 'react';
-import { get } from 'mongoose';
+import { useCallback, useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { HideLoading, ReloadData, SetPortfolioData, ShowLoading } from './redux/rootSlice';
@@ -14,7 +12,7 @@ import Eye from './pages/Home/Eye';
 function App() {
   const {loading,portfolioData,reloadData}=useSelector((state)=>state.root)
   const dispatch=useDispatch()
-  const getportfolioData = async () => {
+  const getportfolioData = useCallback(async () => {
     try{
       dispatch(ShowLoading())
       const response=await axios.get(`${process.env.REACT_APP_BACKEND}/portfolio/get-portfolio-data`)
@@ -25,17 +23,17 @@ function App() {
     catch(err){
       dispatch(HideLoading())    
     }
-  }
+  }, [dispatch])
   useEffect(() => {
     if(!portfolioData){
     getportfolioData() } 
-  },[portfolioData])
+  },[portfolioData, getportfolioData])
 
   useEffect(() => {
     if(reloadData){
       getportfolioData()
     }
-  },[reloadData])
+  },[reloadData, getportfolioData])
 
   return (
    <BrowserRouter>

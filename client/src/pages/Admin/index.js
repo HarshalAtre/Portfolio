@@ -8,7 +8,6 @@ import Experience from './Experience';
 import AdminProject from './AdminProject';
 import AdminCourses from './AdminCourses';
 import AdminContact from './AdminContact';
-const {TabPane} = Tabs;
 
 function Admin() {
   const logout=()=>{
