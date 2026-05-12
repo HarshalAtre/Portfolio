@@ -46,7 +46,7 @@ function Experiences({ enter, leave }) {
       <SectionTitle title="Experience" />
 
       <div className="relative pb-3">
-        <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-tertiary via-[#52C7C288] to-transparent [box-shadow:0_0_24px_rgba(82,199,194,0.6)] sm:left-3 sm:translate-x-0" />
+        <div className="absolute left-1/2 top-0 h-full w-[2px] -translate-x-1/2 bg-gradient-to-b from-tertiary via-[#52C7C288] to-transparent [box-shadow:0_0_24px_rgba(82,199,194,0.6)] sm:left-3 sm:-translate-x-1/2" />
 
         <div className="space-y-10">
           {experience.map((exp, index) => {
@@ -58,7 +58,7 @@ function Experiences({ enter, leave }) {
                 key={index}
                 className="relative grid grid-cols-2 gap-10 sm:grid-cols-1 sm:pl-10"
               >
-                <div className="absolute left-1/2 top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-tertiary ring-4 ring-primary z-10 sm:left-3 sm:translate-x-0">
+                <div className="absolute left-1/2 top-2 h-3 w-3 -translate-x-1/2 rounded-full bg-tertiary ring-4 ring-primary z-10 sm:left-3 sm:-translate-x-1/2">
                   {isCurrent && (
                     <span className="absolute inset-0 rounded-full bg-tertiary animate-ping opacity-75" />
                   )}

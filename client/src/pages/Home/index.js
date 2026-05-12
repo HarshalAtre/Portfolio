@@ -55,7 +55,7 @@ function Home() {
             </section>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1}>
+          <ScrollReveal delay={0.1} amount={0.08}>
             <section id="projects">
               <Projects enter={handleAboutMouseEnter} leave={handleAboutMouseLeave} cursorPosition={cursorPosition} />
             </section>
