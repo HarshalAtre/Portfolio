@@ -3,10 +3,43 @@ import SectionTitle from '../../components/SectionTitle';
 import { useSelector } from 'react-redux';
 import { projects as fallbackProjects } from '../../resources/projects';
 
+const parseProjectPositionAndDescription = (rawDescription = '') => {
+  const descriptionText = String(rawDescription || '');
+  const match = descriptionText.match(/^\s*(\d+)\s*(?:\r?\n)+([\s\S]*)$/);
+
+  if (!match) {
+    return {
+      position: Number.MAX_SAFE_INTEGER,
+      description: descriptionText,
+    };
+  }
+
+  return {
+    position: Number(match[1]),
+    description: match[2].trimStart(),
+  };
+};
+
 function Projects({ enter, leave }) {
   const { portfolioData } = useSelector((state) => state.root);
   const apiProjects = Array.isArray(portfolioData?.projects) ? portfolioData.projects : [];
   const projects = apiProjects.length > 0 ? apiProjects : fallbackProjects;
+  const sortedProjects = projects
+    .map((project, index) => {
+      const parsedMeta = parseProjectPositionAndDescription(project.description);
+      return {
+        ...project,
+        description: parsedMeta.description,
+        _position: parsedMeta.position,
+        _initialIndex: index,
+      };
+    })
+    .sort((a, b) => {
+      if (a._position !== b._position) {
+        return a._position - b._position;
+      }
+      return a._initialIndex - b._initialIndex;
+    });
 
   return (
     <section onMouseEnter={enter} onMouseLeave={leave} className="projects-section relative py-10">
@@ -22,7 +55,7 @@ function Projects({ enter, leave }) {
       </div>
 
       <div className="projects-section__grid grid grid-cols-2 md:grid-cols-1 gap-8">
-        {projects.map((project, idx) => {
+        {sortedProjects.map((project, idx) => {
           const tags = Array.isArray(project.technologies) ? project.technologies : [];
           const hasLink = Boolean(project.link);
           const imageSrc = project.image || '/logo512.png';
@@ -99,7 +132,7 @@ function Projects({ enter, leave }) {
         })}
       </div>
 
-      {projects.length === 0 && (
+      {sortedProjects.length === 0 && (
         <div className="rounded-lg border border-[#1f436f] bg-[#10294d] p-6 mt-8">
           <p className="text-gray-300">No projects available yet.</p>
         </div>
