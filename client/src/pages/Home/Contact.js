@@ -67,7 +67,7 @@ function Contact({ enter, leave }) {
               onMouseLeave={() => setHoveredIndex(null)}
               style={{ opacity: hoveredIndex !== null && hoveredIndex !== index ? 0.2 : 1, transition: 'opacity 0.2s, transform 0.3s', fontSize: '1.1rem' }}
             >
-              <span>{splitToLetters(`${key} : ${value}`)}</span>
+              <span>{splitToLetters(`${key === 'address' ? 'location' : key} : ${value}`)}</span>
             </div>
           ))}
           <h1 className='text-white text-lg' style={{ opacity: hoveredIndex !== null ? 0.2 : 1, transition: 'opacity 0.2s' }}>{"}"}</h1>
