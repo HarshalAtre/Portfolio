@@ -61,7 +61,7 @@ function Intro({enter,leave}) {
           </Link>
         </motion.div>
         <motion.p variants={item} className="text-white w-2/3 sm:w-full">{description||""}</motion.p>
-        <motion.a variants={item} href="https://drive.google.com/file/d/1rB415Y716_hpgWsD5wS0U7i0f50kuHjB/view?usp=sharing" target="_blank" rel="noreferrer" download>
+        <motion.a variants={item} href="https://drive.google.com/file/d/1LkVVkOcwtYXkZO4eEhgNZ2UuxnXcjrI6/view?usp=sharing" target="_blank" rel="noreferrer" download>
           <button className='border-2 border-tertiary text-white px-10 py-3 rounded cursor-none btn'>Resume</button>
         </motion.a>
       </div>
